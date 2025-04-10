@@ -17,7 +17,15 @@ const searchRoutes = require('./routes/searchRoutes');
 const chartRoutes = require('./routes/chartRoutes');
 const app = express();
 app.use(cookieParser());
-app.use(cors());
+// CORS configuration to allow your frontend
+const corsOptions = {
+  origin: 'https://jobify-mwbz.onrender.com', // Replace with your actual frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Adjust allowed methods as needed
+  allowedHeaders: ['Content-Type', 'Authorization'], // Adjust allowed headers
+};
+
+// Apply CORS middleware with the specified options
+app.use(cors(corsOptions));
 const server = http.createServer(app);
 
 
